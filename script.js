@@ -2,13 +2,6 @@
 const MAXCELL = 25;
 const MINCELL = 0;
 
-
-
-
-/*
-TODO: ver si es posible no escribir los <div> en index.html y crearlos desde el script
-*/
-
 function initialBoard() {
     for (i=1; i<=gameLevel; i++) {
         let randomCell = Math.floor(Math.random() * (MAXCELL - MINCELL) + MINCELL);
@@ -164,3 +157,6 @@ let cells = document.querySelectorAll(".cell");
 let gameLevel = 1;
 
 newGame();
+
+//TODO: Un boton para volver al estado inicial del nivel
+//TODO: Un contador de movimientos
