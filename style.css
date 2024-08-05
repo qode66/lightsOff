@@ -1,0 +1,16 @@
+
+.row {
+    display: flex;
+}
+.cell {
+    width: 4em;
+    height: 4em;
+    margin: 0.3em;
+}
+.bg-light-off {
+    background-color: black;
+}
+
+.bg-light-on {
+    background-color: cyan;
+}
