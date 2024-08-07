@@ -38,6 +38,8 @@ function selectTypeCellAndChangeCellState(randomCell) {
 }
 
 // Grupo de funciones que marcan las celdas afectadas segun el tipo de celda principal
+// Las celdas afectadas son la superior, la inferior, la izquierda y la derecha, de la celda selecionada
+// Si la celda seleccionada es esquina o borde de tablero, solo se cambian las interiores al tablero
 
 function leftTopCorner (index) {
     changeCellState(cells[index]);
@@ -160,6 +162,8 @@ function newGame() {
     const textLevel = "Nivel: " + gameLevel;
     const level = document.querySelector("#levelGame");
     level.textContent = textLevel;
+
+    // Elimina los eventListener, si los hay
     cells.forEach((node) => {
         if (node.handler) {
             node.removeEventListener("click", node.handler);
