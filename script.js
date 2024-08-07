@@ -2,6 +2,8 @@
 const MAXCELL = 25;
 const MINCELL = 0;
 
+// Crea el tablero inicial mediante un número de jugadas aleatorias segun el nivel
+
 function initialBoard() {
     for (i=1; i<=gameLevel; i++) {
         let randomCell = Math.floor(Math.random() * (MAXCELL - MINCELL) + MINCELL);
@@ -9,6 +11,8 @@ function initialBoard() {
         cells = document.querySelectorAll(".cell");
     }
 }
+
+// Determina el tipo de celda (esquina, lateral, central) y cambia el estado de las celdas afectadas
 
 function selectTypeCellAndChangeCellState(randomCell) {
 
@@ -32,6 +36,8 @@ function selectTypeCellAndChangeCellState(randomCell) {
             centralCell(randomCell);
         }
 }
+
+// Grupo de funciones que marcan las celdas afectadas segun el tipo de celda principal
 
 function leftTopCorner (index) {
     changeCellState(cells[index]);
@@ -93,6 +99,8 @@ function centralCell(index) {
     changeCellState(cells[index+1]);
 }
 
+// Cambia el color de la celda pasada como parametro
+
 function changeCellState (cellElement) {
     const isCellOff = cellElement.classList.contains("bg-light-off")
     if (isCellOff) {
@@ -101,6 +109,8 @@ function changeCellState (cellElement) {
         cellElement.classList.replace("bg-light-on", "bg-light-off");
     }
 }
+
+// Comprueba si todas las celdas estan apagadas (off)
 
 function checkIsAllLightsOff(cells) {
     let isAllLightsOff = false;
@@ -115,11 +125,15 @@ function checkIsAllLightsOff(cells) {
     return isAllLightsOff;
 }
 
+// Acciones si el jugador resuelve el nivel
+
 function isWinner() {
     gameLevel++;
     newGame();
 
 }
+
+// Acciones cuando el jugador clickea una celda
 
 function handleCellClick(index) {
     return function() {
@@ -129,6 +143,8 @@ function handleCellClick(index) {
     };
 }
 
+// Movimiento del jugador
+
 function playerMove() {
     
     cells.forEach((node, index)=>{
@@ -137,6 +153,8 @@ function playerMove() {
         node.handler = handler;
         });
     };
+
+// Procedimiento para empezar un nuevo nivel
 
 function newGame() { 
     const textLevel = "Nivel: " + gameLevel;
