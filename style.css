@@ -8,9 +8,28 @@
     margin: 0.3em;
 }
 .bg-light-off {
-    background-color: black;
+    animation: lightOff 1s linear 1 normal both;
 }
 
 .bg-light-on {
-    background-color: cyan;
+    animation: lightOn 1s linear 1 normal both;
+
+}
+
+@keyframes lightOn {
+    0% {
+        background: black;
+    }
+    100% {
+        background: cyan;
+    }
+}
+
+@keyframes lightOff {
+    0% {
+        background: cyan;
+    }
+    100% {
+        background: black;
+    }
 }
