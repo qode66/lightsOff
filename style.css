@@ -1,7 +1,4 @@
-body {
-    width: 380px;
-    height: 620px;
-}
+
 .row {
     display: flex;
 }

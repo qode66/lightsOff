@@ -135,16 +135,6 @@ function isWinner() {
 
 }
 
-// Acciones cuando el jugador clickea una celda
-
-function handleCellClick(index) {
-    return function() {
-        selectTypeCellAndChangeCellState(index);
-        checkIsAllLightsOff(cells);
-        if (checkIsAllLightsOff(cells)) isWinner();
-    };
-}
-
 // Movimiento del jugador
 
 function playerMove() {
@@ -156,12 +146,34 @@ function playerMove() {
         });
     };
 
-// Procedimiento para empezar un nuevo nivel
+// Acciones cuando el jugador clickea una celda
 
-function newGame() { 
+function handleCellClick(index) {
+    return function() {
+        movementCounter ++;
+        showMovements();
+        selectTypeCellAndChangeCellState(index);
+        checkIsAllLightsOff(cells);
+        if (checkIsAllLightsOff(cells)) isWinner();
+    };
+}
+
+function showLevel(){
     const textLevel = "Nivel: " + gameLevel;
     const level = document.querySelector("#levelGame");
     level.textContent = textLevel;
+}
+
+function showMovements(){
+    const textMovements = "Movimientos: " + movementCounter;
+    const moveCounter = document.querySelector("#moveCounter");
+    moveCounter.textContent = textMovements;
+}
+
+// Procedimiento para empezar un nuevo nivel
+
+function newGame() { 
+    showLevel();
 
     // Elimina los eventListener, si los hay
     cells.forEach((node) => {
@@ -177,6 +189,7 @@ function newGame() {
 
 let cells = document.querySelectorAll(".cell");
 let gameLevel = 1;
+let movementCounter = 0;
 
 newGame();
 
