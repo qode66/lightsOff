@@ -4,6 +4,24 @@ const MINCELL = 0;
 
 // Crea el tablero inicial mediante un número de jugadas aleatorias segun el nivel
 
+//Imagen en movimiento diagonal hasta el tablero
+document.addEventListener('DOMContentLoaded', (event) => {
+    const myImage = document.getElementById('wizard');
+    let pos = 0;
+    const id = setInterval(frame, 25);
+
+    function frame() {
+        if (pos == 350) {
+            clearInterval(id);
+        } else {
+            pos++;
+            myImage.style.top = pos + 'px';
+            myImage.style.left = pos + 'px';
+        }
+    }
+});
+
+
 function initialBoard() {
     for (i=1; i<=gameLevel; i++) {
         let randomCell = Math.floor(Math.random() * (MAXCELL - MINCELL) + MINCELL);
@@ -158,8 +176,6 @@ function handleCellClick(index) {
     };
 }
 
-// Funciones para mostrar en pantalla Nivel y Movimientos
-
 function showLevel(){
     const textLevel = "Nivel: " + gameLevel;
     const level = document.querySelector("#levelGame");
@@ -194,5 +210,3 @@ let gameLevel = 1;
 let movementCounter = 0;
 
 newGame();
-
-//TODO: Un boton para volver al estado inicial del nivel
