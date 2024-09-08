@@ -158,6 +158,8 @@ function handleCellClick(index) {
     };
 }
 
+// Funciones para mostrar en pantalla Nivel y Movimientos
+
 function showLevel(){
     const textLevel = "Nivel: " + gameLevel;
     const level = document.querySelector("#levelGame");
@@ -194,4 +196,3 @@ let movementCounter = 0;
 newGame();
 
 //TODO: Un boton para volver al estado inicial del nivel
-//TODO: Un contador de movimientos
